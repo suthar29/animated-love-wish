@@ -16,16 +16,16 @@
     --popover: 315 100% 97%;
     --popover-foreground: 315 20% 15%;
 
-    --primary: 315 85% 60%;
+    --primary: 280 100% 65%;
     --primary-foreground: 315 100% 97%;
 
-    --secondary: 280 60% 85%;
+    --secondary: 340 85% 70%;
     --secondary-foreground: 315 20% 15%;
 
     --muted: 315 30% 90%;
     --muted-foreground: 315 20% 40%;
 
-    --accent: 45 100% 70%;
+    --accent: 25 100% 75%;
     --accent-foreground: 315 20% 15%;
 
     --destructive: 0 84.2% 60.2%;
@@ -57,16 +57,16 @@
     --popover: 315 25% 8%;
     --popover-foreground: 315 50% 95%;
 
-    --primary: 315 85% 70%;
+    --primary: 280 100% 75%;
     --primary-foreground: 315 25% 8%;
 
-    --secondary: 280 30% 20%;
-    --secondary-foreground: 315 50% 95%;
+    --secondary: 340 85% 80%;
+    --secondary-foreground: 315 25% 8%;
 
     --muted: 315 25% 15%;
     --muted-foreground: 315 30% 60%;
 
-    --accent: 45 100% 80%;
+    --accent: 25 100% 85%;
     --accent-foreground: 315 25% 8%;
 
     --destructive: 0 62.8% 30.6%;
@@ -98,7 +98,12 @@
 
 @layer utilities {
   .gradient-birthday {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, 
+      hsl(280 100% 75%) 0%, 
+      hsl(320 85% 70%) 25%, 
+      hsl(25 100% 75%) 50%, 
+      hsl(280 100% 80%) 75%, 
+      hsl(340 85% 75%) 100%);
   }
   
   .text-gradient {
@@ -106,5 +111,29 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .text-highlight {
+    background: linear-gradient(135deg, 
+      hsl(280 100% 70%) 0%, 
+      hsl(25 100% 70%) 50%, 
+      hsl(340 85% 70%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  }
+
+  .name-highlight {
+    background: linear-gradient(135deg, 
+      hsl(25 100% 65%) 0%, 
+      hsl(340 85% 65%) 50%, 
+      hsl(280 100% 65%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7));
   }
 }

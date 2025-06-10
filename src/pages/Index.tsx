@@ -50,9 +50,9 @@ const Index = () => {
   return (
     <div className="min-h-screen gradient-birthday relative overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.6'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}></div>
       </div>
 
@@ -80,7 +80,7 @@ const Index = () => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
         {/* Name Input */}
         <div className="mb-8 animate-fade-in-up">
-          <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground/80">
+          <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground/90">
             Enter her name to personalize:
           </label>
           <input
@@ -89,16 +89,16 @@ const Index = () => {
             value={name === 'Beautiful' ? '' : name}
             onChange={handleNameChange}
             placeholder="Enter her name"
-            className="px-4 py-2 rounded-lg border border-border bg-background/50 backdrop-blur-sm text-center font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-4 py-2 rounded-lg border border-border bg-background/60 backdrop-blur-sm text-center font-medium focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"
           />
         </div>
 
         {/* Main Birthday Message */}
         <div className="mb-12 animate-bounce-in">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-text-glow text-gradient">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-text-glow text-highlight">
             Happy Birthday
           </h1>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-accent animate-float">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold name-highlight animate-float">
             {name}! 🎉
           </h2>
         </div>
@@ -130,7 +130,7 @@ const Index = () => {
 
         {/* Footer Message */}
         <div className="mt-16 animate-fade-in-up" style={{ animationDelay: '2s' }}>
-          <p className="text-lg font-medium text-foreground/80">
+          <p className="text-lg font-medium text-foreground/90">
             Wishing you all the love and happiness in the world! 🌍💕
           </p>
         </div>
