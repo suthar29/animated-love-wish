@@ -8,7 +8,10 @@ import QuoteCard from '@/components/QuoteCard';
 const Index = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [showQuote, setShowQuote] = useState(true);
-  const [name, setName] = useState('Beautiful');
+  const [animateText, setAnimateText] = useState(true);
+
+  const name = "CA Jyotika Harsh";
+  const nameWords = name.split(' ');
 
   const lovingQuotes = [
     "Every day with you feels like a celebration! 🎉",
@@ -37,6 +40,7 @@ const Index = () => {
 
   const changeQuote = () => {
     setShowQuote(false);
+    setAnimateText(true);
     setTimeout(() => {
       setCurrentQuoteIndex((prev) => (prev + 1) % lovingQuotes.length);
       setShowQuote(true);
@@ -45,7 +49,23 @@ const Index = () => {
 
   useEffect(() => {
     console.log('Birthday wish page loaded with love! 💕');
+    // Stop name animation after it completes
+    const timer = setTimeout(() => {
+      setAnimateText(false);
+    }, nameWords.length * 500 + 1000);
+    
+    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (animateText) {
+      const timer = setTimeout(() => {
+        setAnimateText(false);
+      }, nameWords.length * 500 + 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [animateText, nameWords.length]);
 
   return (
     <div className="min-h-screen gradient-birthday relative overflow-hidden">
@@ -78,28 +98,41 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        {/* Name Input */}
+        {/* Picture Section */}
         <div className="mb-8 animate-fade-in-up">
-          <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground/90">
-            Enter her name to personalize:
-          </label>
-          <input
-            id="name"
-            type="text"
-            value={name === 'Beautiful' ? '' : name}
-            onChange={handleNameChange}
-            placeholder="Enter her name"
-            className="px-4 py-2 rounded-lg border border-border bg-background/60 backdrop-blur-sm text-center font-medium focus:outline-none focus:ring-2 focus:ring-primary shadow-lg"
-          />
+          <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop&crop=face"
+              alt="Birthday person"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         {/* Main Birthday Message */}
         <div className="mb-12 animate-bounce-in">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 animate-text-glow text-highlight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-highlight">
             Happy Birthday
           </h1>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold name-highlight animate-float">
-            {name}! 🎉
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold name-highlight">
+            {nameWords.map((word, index) => (
+              <span
+                key={index}
+                className={`inline-block mr-3 ${
+                  animateText 
+                    ? 'animate-fade-in-up' 
+                    : ''
+                }`}
+                style={animateText ? { 
+                  animationDelay: `${index * 0.5}s`,
+                  opacity: 0,
+                  animationFillMode: 'forwards'
+                } : {}}
+              >
+                {word}
+              </span>
+            ))}
+            🎉
           </h2>
         </div>
 
