@@ -36,7 +36,6 @@ const Index = () => {
 
   const changeQuote = () => {
     setShowQuote(false);
-    setAnimateText(true);
     setTimeout(() => {
       setCurrentQuoteIndex((prev) => (prev + 1) % lovingQuotes.length);
       setShowQuote(true);
@@ -52,16 +51,6 @@ const Index = () => {
     
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (animateText) {
-      const timer = setTimeout(() => {
-        setAnimateText(false);
-      }, nameWords.length * 500 + 1000);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [animateText, nameWords.length]);
 
   return (
     <div className="min-h-screen gradient-light-blue relative overflow-hidden">
