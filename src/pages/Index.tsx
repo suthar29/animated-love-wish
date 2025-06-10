@@ -34,10 +34,6 @@ const Index = () => {
     delay: `${Math.random() * 3}s`
   }));
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value || 'Beautiful');
-  };
-
   const changeQuote = () => {
     setShowQuote(false);
     setAnimateText(true);
@@ -68,7 +64,7 @@ const Index = () => {
   }, [animateText, nameWords.length]);
 
   return (
-    <div className="min-h-screen gradient-birthday relative overflow-hidden">
+    <div className="min-h-screen gradient-light-blue relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" style={{
@@ -111,16 +107,16 @@ const Index = () => {
 
         {/* Main Birthday Message */}
         <div className="mb-12 animate-bounce-in">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-highlight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-dark-highlight">
             Happy Birthday
           </h1>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold name-highlight">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold dark-name-highlight">
             {nameWords.map((word, index) => (
               <span
                 key={index}
                 className={`inline-block mr-3 ${
                   animateText 
-                    ? 'animate-fade-in-up' 
+                    ? 'animate-slide-in-scale' 
                     : ''
                 }`}
                 style={animateText ? { 
@@ -163,7 +159,7 @@ const Index = () => {
 
         {/* Footer Message */}
         <div className="mt-16 animate-fade-in-up" style={{ animationDelay: '2s' }}>
-          <p className="text-lg font-medium text-foreground/90">
+          <p className="text-lg font-medium text-slate-700">
             Wishing you all the love and happiness in the world! 🌍💕
           </p>
         </div>
